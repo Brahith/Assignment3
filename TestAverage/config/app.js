@@ -6,7 +6,7 @@ let logger = require('morgan');
 
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
-let bookRouter = require('../routes/testMark')
+let testRouter = require('../routes/testMark')
 
 let app = express();
 let mongoose = require('mongoose');
