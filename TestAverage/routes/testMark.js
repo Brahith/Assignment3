@@ -1,16 +1,26 @@
 const express = require('express');
 const router = express.Router();
-
-// Model import (assuming you are using a "Book" model)
-const Book = require('../model/average');
+const markControl = require('../controllers/markControl'); // Ensure this path is correct
+const DB = require('../config/db');
 
 // Basic route setup
-router.get('/', async (req, res, next) => {
-  try {
-    // Add your logic here
-    res.status(200).send('Route working');
-  } catch (error) {
-    next(error); // Handle errors
-  }
-});
+// Route to render all tasks
+router.get('/', markControl.getAllTasks);
+
+// Route to render form to create a new task
+//router.get('/create', markControl.renderCreateForm);
+
+// Route to handle new task submission
+//router.post('/create', markControl.createTask);
+
+// Route to render edit form for a task
+//router.get('/edit/:id', markControl.renderEditForm);
+
+// Route to handle edit submission
+//router.post('/edit/:id', markControl.updateTask);
+
+// Route to handle task deletion
+//router.post('/delete/:id', markControl.deleteTask);
+
+
 module.exports = router;

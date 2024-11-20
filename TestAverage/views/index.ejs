@@ -43,10 +43,10 @@
   event.preventDefault();
 
   // Get form data
-  const subject = document.getElementById("subject").value;
-  const mark = parseFloat(document.getElementById("mark").value);
-  const weight = parseFloat(document.getElementById("weight").value);
-  const date = document.getElementById("date").value;
+  let subject = document.getElementById("subject").value;
+  let mark = parseFloat(document.getElementById("mark").value);
+  let weight = parseFloat(document.getElementById("weight").value);
+  let date = document.getElementById("date").value;
 
   // Calculate weighted score
   const weightedScore = (mark * weight) / 100;
@@ -57,7 +57,7 @@
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ subject, mark, weight, date, weightedScore }),
+    body: JSON.stringify({subject, mark, weight, date, weightedScore}),
   });
 
   if (response.ok) {
@@ -78,9 +78,6 @@
     alert("Failed to submit data");
   }
 });
-
   </script> <!-- Link to external JavaScript -->
-
-
 
 <%- include Partials/footer.ejs %>
