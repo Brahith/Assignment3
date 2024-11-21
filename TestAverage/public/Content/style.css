@@ -40,14 +40,14 @@ body {
     width: 100%;
     padding: 10px;
     border: none;
-    background-color: #dc1111;
+    background-color: #ff0000b7;
     color: white;
     border-radius: 4px;
     cursor: pointer;
   }
   
   form button:hover {
-    background-color: #dc1111;
+    background-color: #ff0000b7;
   }
   
   table {
@@ -63,7 +63,7 @@ body {
   }
   
   table th {
-    background-color: #dc1111;
+    background-color: #ff0000b7;
     color: white;
   }
   
