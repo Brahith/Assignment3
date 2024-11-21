@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * Module dependencies.
  */
@@ -7,6 +5,10 @@
 var app = require('./config/app');
 var debug = require('debug')('infrproject:server');
 var http = require('http');
+const connectDB = require('./config/db'); // Import the database connection
+
+// Connect to MongoDB
+connectDB();
 
 /**
  * Get port from environment and store in Express.
