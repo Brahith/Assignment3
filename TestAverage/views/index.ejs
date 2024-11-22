@@ -40,8 +40,15 @@
       <td><%= task.weight %></td>
       <td><%= task.date.toISOString().substring(0, 10) %></td>
       <td><%= (task.mark * task.weight / 100).toFixed(2) %></td>
-    </tr><% 
-    }) %>
+       <td>
+        <button class="action edit-btn" onclick="window.location.href='/edit/<%= task._id %>'">Edit</button>
+        <form action="/delete/<%= task._id %>" method="POST" style="display:inline;">
+          <button class="action delete-btn" onclick="return confirm('Are you sure you want to delete this task?');">Delete</button>
+        </form>
+
+      </td>
+    </tr>
+    <% }) %>
   </tbody>
 </table>
 

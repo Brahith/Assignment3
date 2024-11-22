@@ -1,7 +1,5 @@
 const avg = require('../model/avg');
 
-console.log("ghfgfj")
-
 // Retrieve and render all tasks
 exports.getAllTests = async (req, res) => {
     try {
@@ -12,19 +10,15 @@ exports.getAllTests = async (req, res) => {
       res.status(500).send('Internal Server Error');
     }
 };  
-console.log("here2")
 
 // Render the form to create a new task
 exports.renderCreateForm = (req, res) => {
     res.render('create');
 };
-console.log("here4")
 
 // Create a new task
 exports.createTest = async (req, res) => {
     try {
-        console.log("Request Body:", req.body); // Debugging
-
         // Safely destructure req.body
         const { subject, mark, weight, date } = req.body;
 
@@ -67,7 +61,7 @@ try {
 exports.updateTest = async (req, res) => {
 try {
     const { subject, mark, weight, date } = req.body;
-    await Task.findByIdAndUpdate(req.params.id, { subject, mark, weight, date });
+    await avg.findByIdAndUpdate(req.params.id, { subject, mark, weight, date });
     res.redirect('/');
 } catch (err) {
     console.error('Error updating task:', err);
