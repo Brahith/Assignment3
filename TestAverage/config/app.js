@@ -12,6 +12,10 @@ let app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.render('splash');
+});
+
 app.use('/', indexRouter);
 
 // Import and connect to MongoDB

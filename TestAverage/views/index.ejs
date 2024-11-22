@@ -1,30 +1,39 @@
 <%- include Partials/header.ejs %>
 
+<!-- Page Title -->
 <h1>Test Calculator</h1>
 
+<!-- Form Section: Used to add a new test entry -->
 <form id="testForm" action="/add" method="POST">
 <div>
+  <!-- Input for test subject -->
   <label for="subject">Test Subject</label>
   <input type="text" id="subject" name="subject" required>
 </div>
 <div>
+  <!-- Input for test mark (percentage) -->
   <label for="mark">Mark (%)</label>
   <input type="number" id="mark" name="mark" required min="0" max="100">
 </div>
 <div>
+  <!-- Input for test weight (percentage) -->
   <label for="weight">Weight (%)</label>
   <input type="number" id="weight" name="weight" required min="0" max="100">
 </div>
 <div>
+  <!-- Input for test date -->
   <label for="date">Date of Test</label>
   <input type="date" id="date" name="date" required>
 </div>
-<button type="submit">Add Test</button>
+  <!-- Submit button to add the test -->
+  <button type="submit">Add Test</button>
 </form>
 
+<!-- Table Section: Displays all test entries -->
 <table>
   <thead>
     <tr>
+      <!-- Table headers for the test details -->
       <th>Subject</th>
       <th>Mark (%)</th>
       <th>Weight (%)</th>
@@ -33,16 +42,20 @@
     </tr>
   </thead>
   <tbody id="testTableBody">
+    <!-- Dynamically render rows for each test entry -->
     <% tasks.forEach(task => { %>
     <tr>
+      <!-- Display test details --> 
       <td><%= task.subject %></td>
       <td><%= task.mark %></td>
       <td><%= task.weight %></td>
       <td><%= task.date.toISOString().substring(0, 10) %></td>
       <td><%= (task.mark * task.weight / 100).toFixed(2) %></td>
        <td>
+        <!-- Edit button to update the test entry -->
         <button class="action edit-btn" onclick="window.location.href='/edit/<%= task._id %>'">Edit</button>
         <form action="/delete/<%= task._id %>" method="POST" style="display:inline;">
+          <!-- Delete button to delete the test entry -->
           <button class="action delete-btn" onclick="return confirm('Are you sure you want to delete this task?');">Delete</button>
         </form>
 
@@ -79,11 +92,6 @@ row.innerHTML = `
   <td>${weightedScore.toFixed(2)}</td>
 `;
 tableBody.appendChild(row);
-
-// Reset the form
-form.reset();
-});
-
 </script> 
 
 

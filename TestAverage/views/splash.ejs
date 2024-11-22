@@ -1,0 +1,40 @@
+<%- include Partials/header.ejs %>
+
+<!-- Splash Page Style -->
+<style>
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+button:hover {
+    background-color: #0056b3;
+}
+</style>
+
+<!-- Title Name of Page -->
+<body>
+  <h1>Welcome to the Test Calculator</h1>
+  <!-- Button to move the user to the main page -->
+  <button onclick="window.location.href='/home'">Enter</button>
+</body>
+
+<%- include Partials/footer.ejs %>

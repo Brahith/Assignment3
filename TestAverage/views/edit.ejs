@@ -1,29 +1,37 @@
 <%- include('Partials/header.ejs') %>
 
+<!-- Container for the Edit Task Page -->
 <div class="container">
+  <!-- Page Title -->
   <h2>Edit Task</h2>
+  <!-- Form to edit the task; sends POST request to the /edit/:id route -->
   <form action="/edit/<%= task._id %>" method="POST">
 
+    <!-- Form Group: Input for Test Name -->
     <div class="form-group">
       <label for="subject">Test Name</label>
       <input type="text" id="subject" name="subject" class="form-control" value="<%= task.subject %>" required>
     </div>
 
+     <!-- Form Group: Input for Test Mark -->
     <div class="form-group">
       <label for="">mark</label>
       <input type="number" id="mark" name="mark" class="form-control" value="<%= task.mark %>" required>
     </div>
 
+    <!-- Form Group: Input for Test Weight -->
     <div class="form-group">
       <label for="">weight</label>
       <input type="number" id="Weight" name="Weight" class="form-control" value="<%= task.weight %>" required>
     </div>
 
+    <!-- Form Group: Input for Test Date -->
     <div class="form-group">
       <label for="date">date</label>
       <input type="date" id="date" name="date" class="form-control" value="<%= task.date.toISOString().substring(0, 10) %>" required>
     </div>
     
+    <!-- Submit Button: Saves the updated task -->
     <button type="submit" class="btn btn-primary">Save Changes</button>
   </form>
 </div>
