@@ -46,11 +46,11 @@ exports.createTest = async (req, res) => {
 // Render the edit form for a task
 exports.renderEditForm = async (req, res) => {
 try {
-    const test = await avg.findById(req.params.id);
-    if (!test) {
+    const task = await avg.findById(req.params.id);
+    if (!task) {
     return res.status(404).send('Task not found');
     }
-    res.render('edit', { avg });
+    res.render('edit', { task });
 } catch (err) {
     console.error('Error fetching task for editing:', err);
     res.status(500).send('Internal Server Error');
