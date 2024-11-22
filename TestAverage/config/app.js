@@ -3,11 +3,15 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
-let indexRouter = require('../routes/index');
-let usersRouter = require('../routes/users');
-let bookRouter = require('../routes/avg')
+let indexRouter = require('../routes/avg');
 
 let app = express();
+
+// Middleware to parse form data
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use('/', indexRouter);
 
 // Import and connect to MongoDB
 const connectDB = require('./db');
@@ -16,10 +20,6 @@ connectDB();  // Use the function from db.js to connect to MongoDB
 // view engine setup
 app.set('../views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/books',bookRouter);
 
 // Static files
 app.use('/Content', express.static(path.join(__dirname, '../public/Content')));

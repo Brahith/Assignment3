@@ -1,7 +1,8 @@
 <%- include Partials/header.ejs %>
 
 <h1>Test Calculator</h1>
-<form id="testForm">
+
+<form id="testForm" action="/add" method="POST">
 <div>
   <label for="subject">Test Subject</label>
   <input type="text" id="subject" name="subject" required>
@@ -31,7 +32,17 @@
       <th>Weighted Score (%)</th>
     </tr>
   </thead>
-  <tbody id="testTableBody"></tbody>
+  <tbody id="testTableBody">
+    <% tasks.forEach(task => { %>
+    <tr>
+      <td><%= task.subject %></td>
+      <td><%= task.mark %></td>
+      <td><%= task.weight %></td>
+      <td><%= task.date.toISOString().substring(0, 10) %></td>
+      <td><%= (task.mark * task.weight / 100).toFixed(2) %></td>
+    </tr><% 
+    }) %>
+  </tbody>
 </table>
 
 <script src="/script.js">

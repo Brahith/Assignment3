@@ -1,25 +1,12 @@
-var express = require('express');
-var router = express.Router();
-let avg = require('../model/avg')
+const express = require('express');
+const router = express.Router();
+const testController = require('../controllers/testController'); // Update the path as needed
 
-router.get('/', async (req, res, next) => {
-    try {
-        // Fetch all test records from the database
-        const TestList = await avg.find();
-
-        // Render the 'calculator' view with the list of tests
-        res.render('calculator', {
-            title: 'Test Calculator',
-            TestList: TestList // Pass test data to the template
-        });
-    } 
-    catch (err) {
-        // Log errors and display an error message in the view
-        console.error(err);
-        res.render('calculator', {
-            error: 'Error fetching tests from the server'
-        });
-    }
-});
+// Define routes
+router.get('/', testController.getAllTests); // Display all test entries
+router.post('/add', testController.createTest); // Add a new test entry
+router.get('/edit/:id', testController.renderEditForm); // Render the edit form for a specific test
+router.post('/edit/:id', testController.updateTest); // Update an existing test entry
+router.get('/delete/:id', testController.deleteTest); // Delete a test entry
 
 module.exports = router;
