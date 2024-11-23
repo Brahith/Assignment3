@@ -11,6 +11,7 @@ let app = express();
 // Middleware to parse form data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser()); 
 
 app.get('/', (req, res) => {
   res.render('splash');
